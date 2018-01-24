@@ -9,12 +9,19 @@ class App extends React.Component {
         super(props);
         this.state = {
             text: "I'm having fun with React!",
-            newInput: ""
+            newInput: "",
+            hasLoaded: false
         }
     }
 
     handleInput(event) {
-        this.setState({newInput: event.target.value});
+        this.setState({ newInput: event.target.value });
+    }
+
+    toggleLoad(event) {
+        this.setState(prevState => ({
+            hasLoaded: !prevState.hasLoaded
+        }));
     }
 
     render() {
@@ -26,6 +33,11 @@ class App extends React.Component {
                     placeholder={this.state.text}
                     onChange={(event) => { this.handleInput(event) }}
                 />
+                <div>
+                    <button
+                        onClick={(event) => { this.toggleLoad(event) }}
+                    >Click me mang!</button>
+                </div>
             </React.Fragment>
         )
     }
