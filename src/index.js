@@ -2,4 +2,4 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
-ReactDOM.render(<App text="Whatup World!" />, document.getElementById('root'));
+ReactDOM.render(<App message="Whatup World!" />, document.getElementById('root'));
