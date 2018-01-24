@@ -24,22 +24,39 @@ class App extends React.Component {
         }));
     }
 
+    componentDidMount() {
+        this.setState({ hasLoaded: true });
+    }
+
     render() {
-        return (
-            <React.Fragment>
-                <h1>{this.props.message} {this.state.text}</h1>
-                <input
-                    type="text"
-                    placeholder={this.state.text}
-                    onChange={(event) => { this.handleInput(event) }}
-                />
-                <div>
-                    <button
-                        onClick={(event) => { this.toggleLoad(event) }}
-                    >Click me mang!</button>
-                </div>
-            </React.Fragment>
-        )
+        if (this.state.hasLoaded === true) {
+            return (
+                <React.Fragment>
+                    <h1>{this.props.message} {this.state.text}</h1>
+                    <input
+                        type="text"
+                        placeholder={this.state.text}
+                        onChange={(event) => { this.handleInput(event) }}
+                    />
+                    <div>
+                        <button
+                            onClick={(event) => { this.toggleLoad(event) }}
+                        >Click me mang!</button>
+                    </div>
+                </React.Fragment>
+            )
+        } else {
+            return (
+                <React.Fragment>
+                    <h1>Loading ...</h1>
+                    <div>
+                        <button
+                            onClick={(event) => { this.toggleLoad(event) }}
+                        >Click me mang!</button>
+                    </div>
+                </React.Fragment>
+            )
+        }
     }
 
 }
